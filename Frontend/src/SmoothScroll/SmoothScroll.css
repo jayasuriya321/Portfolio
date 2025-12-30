@@ -1,0 +1,24 @@
+.scroll-container {
+  width: 100vw;
+  height: 100vh;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+  overflow: hidden;          /* ✅ let smooth-scrollbar control scrolling */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-content {
+  width: 100%;
+  min-height: 100%;
+}
+
+.scrollbar-thumb {
+  width: 4px !important;
+}
+
+.scrollbar-track-y {
+  width: 4px !important;
+}
