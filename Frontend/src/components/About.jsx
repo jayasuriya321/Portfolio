@@ -1,29 +1,8 @@
 import { motion } from "framer-motion";
 
-/* Animation Variants */
-const container = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.18,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
-
 export function About() {
+  const words = ["Design", "Development", "Frontend", "Experience"];
+
   return (
     <>
       {/* Title */}
@@ -33,87 +12,49 @@ export function About() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         viewport={{ once: true }}
         className="
-          section-title
           text-5xl sm:text-7xl md:text-8xl lg:text-9xl
           font-display font-extrabold mt-10
           uppercase text-center text-[#101010] tracking-tighter
         "
+        id="about"
       >
         About Me
       </motion.h3>
 
       {/* Section */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        viewport={{ once: true }}
-        className="bg-[#101010] mb-0 mt-10"
-      >
-        <div id="about" className="py-16 md:py-30">
-          <div
-            className="
-              flex flex-col lg:flex-row
-              justify-between gap-12 lg:gap-14
-              items-center
-              px-4 max-w-[1800px] m-auto
-            "
-          >
-            {/* Left Content */}
-            <motion.div
-              variants={container}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="space-y-6 max-w-[900px] mr-auto"
-            >
-              <motion.p
-                variants={item}
-                className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-body font-thin"
-              >
-                I’m a{" "}
-                <span className="text-white font-semibold">
-                  Front-End Developer
-                </span>{" "}
-                with over{" "}
-                <span className="text-white font-semibold">
-                  3+ years of experience
-                </span>{" "}
-                building high-performance, visually refined, and user-focused
-                web applications.
-              </motion.p>
+      <section className="bg-red-500 mt-10">
+        <div className="py-16 md:py-30">
+          <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-14 items-center px-4 max-w-[1800px] m-auto">
 
-              <motion.p
-                variants={item}
-                className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-body font-thin"
-              >
+            {/* Left Content */}
+            <div className="space-y-6 max-w-[900px] mr-auto">
+              <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-body font-thin">
+                I’m a{" "}
+                <span className="text-white font-semibold">Front-End Developer</span>{" "}
+                with over{" "}
+                <span className="text-white font-semibold">3+ years of experience</span>{" "}
+                building high-performance, visually refined, and user-focused web applications.
+              </p>
+
+              <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-body font-thin">
                 My core expertise lies in{" "}
-                <span className="text-white font-medium">
-                  JavaScript, React, TailwindCSS
-                </span>{" "}
+                <span className="text-white font-medium">JavaScript, React, TailwindCSS</span>{" "}
                 and REST API integrations. I also work confidently with{" "}
                 <span className="text-white font-medium">MERN stack</span> and{" "}
-                <span className="text-white font-medium">
-                  WordPress / WooCommerce
-                </span>
-                .
-              </motion.p>
+                <span className="text-white font-medium">WordPress / WooCommerce</span>.
+              </p>
 
-              <motion.p
-                variants={item}
-                className="text-white text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-body font-thin"
-              >
+              <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-body font-thin">
                 I enjoy turning complex requirements into elegant interfaces,
                 optimizing performance, and collaborating with teams that value
                 clean code and thoughtful design.
-              </motion.p>
-            </motion.div>
+              </p>
+            </div>
 
             {/* Moving Text Strip */}
             <div
               className="
-                relative
-                h-[220px] sm:h-[280px] md:h-[320px] lg:h-[350px]
+                relative h-[180px] sm:h-[220px] md:h-[260px] lg:h-[300px]
                 overflow-hidden
               "
               style={{
@@ -127,7 +68,7 @@ export function About() {
                 className="flex flex-col items-center"
                 animate={{ y: ["0%", "-50%"] }}
                 transition={{
-                  duration: 25,
+                  duration: 20, // slower for desktop
                   ease: "linear",
                   repeat: Infinity,
                 }}
@@ -138,21 +79,20 @@ export function About() {
                     key={i}
                     className="
                       flex flex-col items-center gap-2
-                      text-4xl sm:text-6xl md:text-8xl lg:text-9xl
+                      text-4xl sm:text-5xl md:text-6xl lg:text-7xl
                       font-display font-extrabold
                       uppercase tracking-tight
                       text-white/90
-                      transition-transform duration-500 hover:scale-[1.02]
                     "
                   >
-                    <span>Design</span>
-                    <span>Development</span>
-                    <span>Frontend</span>
-                    <span>Experience</span>
+                    {words.map((word) => (
+                      <span key={word}>{word}</span>
+                    ))}
                   </div>
                 ))}
               </motion.div>
             </div>
+
           </div>
         </div>
 
@@ -164,7 +104,7 @@ export function About() {
           viewport={{ once: true }}
           className="border-[#b7b7b77c] max-w-[1800px] m-auto origin-left"
         />
-      </motion.section>
+      </section>
     </>
   );
 }

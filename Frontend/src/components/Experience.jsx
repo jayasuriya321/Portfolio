@@ -6,10 +6,7 @@ const cardLeft = {
   show: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
-    },
+    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -18,10 +15,7 @@ const cardRight = {
   show: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
-    },
+    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -55,78 +49,67 @@ Provided customer support and resolved service-related issues.`,
       title: "Loan Recovery Agent",
       org: "Star Associates",
       period: "2020 – 2021",
-      desc: `Managed loan recovery operations and customer follow-ups.
-Negotiated repayment plans while maintaining professional relationships.
-Ensured timely collection and accurate reporting.`,
+     desc: `Managed loan recovery operations. Followed up with customers. Negotiated repayment plans. Ensured timely collection and reporting.`
     },
   ];
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      viewport={{ once: true, amount: 0.25 }}
-      className="bg-[#101010] py-20"
-      id="experience"
-    >
-      <div className="max-w-[1800px] mx-auto px-4">
-        {/* Title */}
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true, amount: 0.5 }}
-          className="
-            text-center
-            text-6xl md:text-7xl lg:text-9xl
-            text-white font-bold uppercase
-            mb-16 font-display tracking-tighter
-          "
-        >
-          Experience
-        </motion.h3>
+    <section className="bg-red-500 py-20" id="experience">
 
-        {/* Experience Cards */}
-        <div className="flex flex-col gap-20 relative">
-          {items.map((item, idx) => {
-            const isLeft = idx % 2 === 0;
+      {/* Title */}
+      <motion.h3
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true }}
+        className="text-center text-6xl md:text-7xl lg:text-9xl text-white font-bold uppercase mb-20 font-display"
+      >
+        Experience
+      </motion.h3>
 
-            return (
-              <motion.div
-                key={idx}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.35 }}
-                variants={isLeft ? cardLeft : cardRight}
-                className={`flex flex-col md:flex-row items-center w-full
-                  ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
+      {/* Experiences */}
+      {items.map((item, idx) => {
+        const isLeft = idx % 2 === 0;
+
+        return (
+          <section
+            key={idx}
+            className="max-w-[1800px] mx-auto px-4 mb-24"
+          >
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.4 }}
+              variants={isLeft ? cardLeft : cardRight}
+              className={`flex ${
+                isLeft ? "justify-start" : "justify-end"
+              }`}
+            >
+              <div
+                className={`text-white text-justify max-w-[580px] ${
+                  isLeft ? "text-left" : "text-right"
+                }`}
               >
-                <div
-                  className={`p-6 text-white w-full 
-                    ${isLeft ? "text-left" : "text-right"}`}
-                >
-                  <h4 className="text-xl sm:text-2xl lg:text-6xl font-display font-semibold uppercase">
-                    {item.title}
-                  </h4>
+                <h4 className="text-xl sm:text-2xl lg:text-6xl font-display font-semibold uppercase">
+                  {item.title}
+                </h4>
 
-                  <p className="mt-1 text-xl font-body font-thin">
-                    {item.org}
-                  </p>
+                <p className="mt-2 text-xl font-body font-medium uppercase">
+                  {item.org}
+                </p>
 
-                  <p className="mt-10 text-lg leading-relaxed uppercase mr-auto ml-auto max-w-8xl font-body font-light whitespace-pre-line">
-                    {item.desc}
-                  </p>
+                <p className="mt-6 text-sm sm:text-base md:text-lg leading-relaxed capitalize font-body font-light">
+                  {item.desc}
+                </p>
 
-                  <span className="text-md font-body text-gray-500 mt-6 block">
-                    {item.period}
-                  </span>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-    </motion.section>
+                <span className="mt-6 block text-lg font-display opacity-70">
+                  {item.period}
+                </span>
+              </div>
+            </motion.div>
+          </section>
+        );
+      })}
+    </section>
   );
 }

@@ -5,6 +5,7 @@ import {
   HiOutlineXMark,
 } from "react-icons/hi2";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 /* Variants */
 const headerVariant = {
@@ -80,14 +81,19 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="font-head font-extrabold text-3xl uppercase"
-          >
-            JayaSuriya
-          </motion.div>
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2 }}
+  className="font-head font-medium text-2xl uppercase"
+>
+  <Link
+    to="/"
+    className="transition-opacity hover:opacity-70 text-white bg-red-500 px-2.5 py-1.5 rounded-lg"
+  >
+    JS
+  </Link>
+</motion.div>
 
           {/* Desktop Navigation */}
           <motion.nav

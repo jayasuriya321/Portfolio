@@ -60,8 +60,7 @@ export function Projects() {
         viewport={{ once: true, amount: 0.5 }}
         className="
           font-display font-bold uppercase tracking-tight text-center
-          text-4xl sm:text-5xl md:text-6xl lg:text-9xl
-        "
+          text-4xl sm:text-5xl md:text-6xl lg:text-9xl"
       >
         Projects
       </motion.h3>
@@ -108,7 +107,7 @@ export function Projects() {
                   <h2
                     className="
                       font-display font-extrabold uppercase tracking-tight
-                      text-3xl sm:text-3xl md:text-4xl lg:text-5xl
+                      text-3xl sm:text-3xl md:text-4xl lg:text-4xl
                     "
                   >
                     {project.title}

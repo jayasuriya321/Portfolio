@@ -13,33 +13,35 @@ app.post("/api/contact", async (req, res) => {
   const { name, phone, email, message } = req.body;
 
   try {
-    await axios.post(
+    const response = await axios.post(
       "https://api.brevo.com/v3/smtp/email",
       {
         sender: {
           name: "Portfolio Contact",
-          email: "verified@yourdomain.com"
+          email: "jayasuriya0321@gmail.com", // MUST be verified in Brevo
         },
-        to: [{ email: "your@email.com" }],
+        to: [{ email: "jayasuriya0321@gmail.com " }], // Recipient
         subject: "New Portfolio Inquiry",
         htmlContent: `
-          <p>Name: ${name}</p>
-          <p>Phone: ${phone}</p>
-          <p>Email: ${email}</p>
-          <p>Message: ${message}</p>
-        `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong> ${message}</p>
+        `,
       },
       {
         headers: {
-          "api-key": process.env.BREVO_API_KEY,
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+          "api-key": process.env.BREVO_API_KEY, // Must exist in .env
+        },
       }
     );
 
+    console.log("Brevo response:", response.data);
     res.json({ success: true });
   } catch (err) {
-    console.error(err.response?.data);
+    console.error("Error sending email:", err.response?.data || err.message);
     res.status(500).json({ success: false });
   }
 });

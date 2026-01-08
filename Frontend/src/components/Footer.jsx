@@ -36,6 +36,28 @@ const item = {
   },
 };
 
+const navLinks = [
+  { name: "About Me", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
+];
+
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/jayasuriya98",
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/jayasuriya321",
+  },
+  {
+    name: "Medium",
+    href: "https://medium.com/@jayasuriya0321",
+  },
+];
+
+
 export function Footer() {
   return (
     <>
@@ -72,41 +94,42 @@ export function Footer() {
             </motion.p>
 
             {/* Socials */}
-            <motion.div
-              variants={stagger}
-              className="
-                flex flex-wrap justify-end gap-x-6 gap-y-2
-                text-lg sm:text-xl md:text-3xl lg:text-4xl
-                uppercase tracking-wide mt-6 sm:mt-8
-              "
-            >
-              {["LinkedIN", "Github", "Medium"].map((name) => (
-                <motion.a
-                  key={name}
-                  variants={item}
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="
-                    group inline-flex items-center gap-2
-                    border-b-2 border-current
-                    transition hover:opacity-60
-                  "
-                >
-                  {name}
-                  <span
-                    className="
-                      inline-block rotate-[10deg]
-                      transition-transform duration-300 ease-out
-                      group-hover:translate-x-1
-                      group-hover:-translate-y-1
-                    "
-                  >
-                    <HiOutlineArrowUpRight />
-                  </span>
-                </motion.a>
-              ))}
-            </motion.div>
+<motion.div
+  variants={stagger}
+  className="
+    flex flex-wrap justify-end gap-x-6 gap-y-2
+    text-lg sm:text-xl md:text-3xl lg:text-4xl
+    uppercase tracking-wide mt-6 sm:mt-8
+  "
+>
+  {socialLinks.map((social) => (
+    <motion.a
+      key={social.name}
+      variants={item}
+      href={social.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        group inline-flex items-center gap-2
+        border-b-2 border-current
+        transition hover:opacity-60
+      "
+    >
+      {social.name}
+      <span
+        className="
+          inline-block rotate-[10deg]
+          transition-transform duration-300 ease-out
+          group-hover:translate-x-1
+          group-hover:-translate-y-1
+        "
+      >
+        <HiOutlineArrowUpRight />
+      </span>
+    </motion.a>
+  ))}
+</motion.div>
+
           </motion.div>
 
           {/* Middle Row */}
@@ -118,26 +141,27 @@ export function Footer() {
             className="flex flex-col md:flex-row justify-between gap-10 md:gap-12 mt-12 sm:mt-16"
           >
             {/* Navigation */}
-            <motion.div
-              variants={stagger}
-              className="
-                flex flex-col space-y-4 sm:space-y-6
-                uppercase font-display font-semibold
-                text-lg sm:text-xl md:text-2xl lg:text-3xl
-                tracking-wide
-              "
-            >
-              {["About Me", "Experience", "Projects"].map((itemName) => (
-                <motion.a
-                  key={itemName}
-                  variants={item}
-                  href="#"
-                  className="hover:opacity-60"
-                >
-                  {itemName}
-                </motion.a>
-              ))}
-            </motion.div>
+<motion.div
+  variants={stagger}
+  className="
+    flex flex-col space-y-4 sm:space-y-6
+    uppercase font-display font-semibold
+    text-lg sm:text-xl md:text-2xl lg:text-3xl
+    tracking-wide
+  "
+>
+  {navLinks.map((link) => (
+    <motion.a
+      key={link.name}
+      variants={item}
+      href={link.href}
+      className="hover:opacity-60"
+    >
+      {link.name}
+    </motion.a>
+  ))}
+</motion.div>
+
 
             {/* Address */}
             <motion.div
@@ -177,6 +201,7 @@ export function Footer() {
                 md:text-[12vw]
                 lg:text-[10vw]
                 xl:text-[16.2vw]
+                text-red-400
               "
             >
               JAYASURIYA
