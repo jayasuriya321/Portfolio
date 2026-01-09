@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: "https://jayasuriya98-portfolio.netlify.app/"
+  origin: "https://jayasuriya98-portfolio.netlify.app"
 }));
 app.use(express.json());
 
